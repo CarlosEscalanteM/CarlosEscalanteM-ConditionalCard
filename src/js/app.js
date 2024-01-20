@@ -1,3 +1,4 @@
+import { left } from "@popperjs/core";
 import "../style/index.css";
 
 /**
@@ -30,18 +31,34 @@ function render(variables = {}) {
   let lastName = variables.lastName === null ? "" : variables.lastName;
   let role =
     variables.role === null ? "What's your profession?" : variables.role;
-  // reset the website body with the new html output
+  let currentCity =
+    variables.currentCity === null
+      ? "What city are you in?"
+      : variables.currentCity;
+  let zodiacSign =
+    variables.zodiacSign === null
+      ? "What's your zodiac sign?"
+      : variables.zodiacSign;
+  let twitter = variables.twitter === null ? "twitter" : variables.twitter;
+  let instagram = variables.instagram === null ? "insta" : variables.instagram;
+  let github = variables.github === null ? "github" : variables.github;
+  let linkedin = variables.linkedin === null ? "linkedin" : variables.linkedin;
+  let socialMediaPosition =
+    variables.position === socialMediaPosition
+      ? "position-left"
+      : "position-right";
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${name} ${lastName}</h1>
           <h2>${role}</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h3>${currentCity}</h3>
+          <h4>${zodiacSign}</h4>
+          <ul class="${socialMediaPosition}">
+            <li><a href="https://twitter.com/${twitter}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${github}"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/school/${linkedin}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -60,7 +77,7 @@ window.onload = function() {
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/men/82.jpg",
     // social media bar position (left or right)
-    socialMediaPosition: "position-left",
+    position: "position-left",
     // social media usernames
     twitter: null,
     github: null,
@@ -69,8 +86,8 @@ window.onload = function() {
     name: null,
     lastName: null,
     role: null,
-    country: null,
-    city: null
+    currentCity: null,
+    zodiacSign: null
   };
   render(window.variables); // render the card for the first time
 
